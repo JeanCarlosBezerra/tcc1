@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:testeagoravaipqp/service/contact_service.dart';
 import 'package:testeagoravaipqp/ui/home_page.dart';
 
 void main() {
@@ -18,6 +19,9 @@ class PrimeiraTela extends StatefulWidget {
 }
 
 class _PrimeiraTelaState extends State<PrimeiraTela> {
+
+  Utilitarios utilitarios = Utilitarios();
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -52,7 +56,9 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                     ],
                   ),
                 ),
-              onTap: () {},
+              onTap: () {
+                utilitarios.ligar();
+              },
             ),
             RaisedButton(
               child: Text("Contatos"),
@@ -63,6 +69,14 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
                   context,
                   MaterialPageRoute(builder: (context) => HomePage()),
                 );
+              },
+            ),
+            RaisedButton(
+              child: Text("EMERGÊNCIA!"),
+              color: Colors.red,
+              textColor: Colors.white,
+              onPressed: () {
+                utilitarios.ligar();
               },
             )
           ],
