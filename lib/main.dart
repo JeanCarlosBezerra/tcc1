@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:testeagoravaipqp/service/contact_service.dart';
 import 'package:testeagoravaipqp/ui/home_page.dart';
+import 'package:hardware_buttons/hardware_buttons.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -21,6 +22,25 @@ class PrimeiraTela extends StatefulWidget {
 class _PrimeiraTelaState extends State<PrimeiraTela> {
 
   Utilitarios utilitarios = Utilitarios();
+  String _botao;
+  StreamSubscription _volumeButtonSubscription;
+
+  @override
+  void initState() {
+    _volumeButtonSubscription = volumeButtonEvents.listen((VolumeButtonEvent event) {
+      setState(() {
+        _botao = VolumeButtonEvent.VOLUME_DOWN.toString();
+        if (_botao == 'VolumeButtonEvent.VOLUME_DOWN') {
+          utilitarios.ligar();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _volumeButtonSubscription?.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +81,7 @@ class _PrimeiraTelaState extends State<PrimeiraTela> {
               },
             ),
             RaisedButton(
-              child: Text("Contatos"),
+              child: Text("CONTATOS"),
               color: Colors.red,
               textColor: Colors.white,
               onPressed: () {

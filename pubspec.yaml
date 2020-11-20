@@ -35,6 +35,7 @@ dependencies:
   flutter_phone_state: ^0.5.9
   intent: ^1.4.0
   sms: ^0.2.4
+  hardware_buttons: ^1.0.0
 
 dev_dependencies:
   flutter_test:

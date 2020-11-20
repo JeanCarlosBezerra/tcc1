@@ -11,8 +11,6 @@ class Utilitarios {
 
   List<Contact> contacts = List();
 
-
-
   Future<void> ligar() async {
     await getAllContacts();
     for (int i = 0; i < contacts.length; i++) {
